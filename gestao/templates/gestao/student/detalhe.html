@@ -1,0 +1,77 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.5-dist/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.5-dist/css/bootstrap.theme.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.4.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'gestao/style.css' %}" />
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'bootstrap-3.3.5-dist/js/bootstrap.min.js' %}"></script>
+<title>GCA - CC</title>
+    <div class="cabecalho">
+		<nav class="navbar">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand logo" href="/gestao/scenario"><i class="fa fa-graduation-cap"></i> GCA</a>
+				</div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cabecalho-links">
+                        <li><a href="/gestao/turmas">Turmas </a></li>
+                        <li class="a-list-group-active"><a href="/gestao/alunos">Alunos </a></li>
+                        <li><a href="/gestao/professores">Professores</a></li>
+                        <li><a href="/gestao/disciplinas">Disciplinas</a></li>
+                        <li><a href="/gestao/provas">Provas</a></li>
+                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">&nbsp; <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/gestao/editar">Alterar senha</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/gestao/logout">Sair</a></li>
+                      </ul>
+                    </li>
+                 </ul>
+			    </div><!-- /.container-fluid -->
+            </div>
+		</nav>
+	</div>
+    <div class="login_container container">
+        <div class="mensagem">
+            {{message}}
+        </div>
+        {% block main %}
+            <legend>{{ object.name }}</legend>
+            <div class="row">
+                <div class="col-sm-5">
+                    <img class="img-responsive img-aluno" src="{{ object.img.url }}">
+                </div>
+                <div class="col-sm-7">
+                    <p><b>E-mail: </b> {{ object.email }}</p>
+                    <p><b>Data de Nascimento: </b> {{ object.date_of_birth }}</p>
+                    <p><b>Data de Entrada:</b> {{ object.start_date }}</p>
+                    <p><b>Situação:</b>
+                        {% if object.status == 0 %}
+                            Cursando
+                        {% elif object.status == 1 %}
+                            Formado
+                        {% elif object.status == 2 %}
+                            Cancelado
+                        {% endif %}
+                    </p>
+
+                </div>
+            </div>
+         <div class="rodape">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4 right">
+                    {% load static from staticfiles %}
+                    <img class="img-rodape" src="{% static "gestao/images/adpt-chamaleon.png" %}" />
+                </div>
+            </div>
+        </div>
+{% endblock %}

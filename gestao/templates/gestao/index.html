@@ -1,0 +1,70 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.5-dist/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.5-dist/css/bootstrap.theme.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.4.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'gestao/login.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'gestao/style.css' %}" />
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'bootstrap-3.3.5-dist/js/bootstrap.min.js' %}"></script>
+<title>GCA - CC</title>
+<div class="login_container container">
+    <div class="mensagem">
+    {{message}}
+    </div>
+    {% block main %}
+        <div id="login">
+            <div id="iconAssinatura"><i id="icone" class="fa fa-graduation-cap fa-4x"></i>GCA</div>
+            <form class="form-horizontal" name="LoginForm" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}" />
+            {% endif %}
+           <div class="form-group">
+                  <div class="col-md-12">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <span class="firula glyphicon glyphicon-user"></span>
+                      </span>
+                      <input id="username" name="username" class="form-control" placeholder="usuário" type="text" required="">
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Prepended text-->
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <span class="firula glyphicon glyphicon-lock"></span>
+                      </span>
+                      <input id="password" name="password" class="form-control" placeholder="senha:" type="password" required="">
+                    </div>
+
+                  </div>
+                </div>
+              <div class="control-group">
+                  <div class="controls">
+                      <button type="submit" class="btn btn-block">Login</button>
+                  </div>
+                  <div class="col-md-12 subtitle">
+                      <a href="/geral/dicas">Ainda não é membro?</a>
+                  </div>
+            </div>
+            </form>
+        </div>
+    </div>
+        <div class="rodape">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4 right">
+                    {% load static from staticfiles %}
+                    <img class="img-rodape" src="{% static "gestao/images/adpt-chamaleon.png" %}" />
+                </div>
+            </div>
+        </div>
+{% endblock %}

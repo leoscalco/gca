@@ -1,0 +1,57 @@
+#login button:hover, .menu_superior button:hover, #email_append button:hover{
+    background-color: #2288AC;
+    border-color: #2288AC;
+    color: #9BD6EF;
+}
+
+#login{
+    width: 300px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    margin-top: -300px;
+    left: 50%;
+    margin-left: -150px;
+    padding: 10px;
+}
+#login form{
+    padding:12px;
+    font-family: 'courier', sans-serif;
+}
+#login button{
+    background-color: #2288AC;
+    color: #9BD6EF;
+    padding: 6px;
+    border-radius: 4px;
+    border-color: #2288AC;
+}
+#login span{
+    background-color: #2288AC;
+    border: none;
+}
+#login input{
+    border-color: #2288AC;
+    border: none;
+    font-size: 16px;
+}
+.login_container{
+    background-color: #FCFFFD;
+    width: 100%;
+    height: 100%;
+}
+#login #iconAssinatura{
+    text-align: center;
+    font-size: 50px;
+    color: #7F94A5;
+}
+#login .firula{
+    color: #FCFFFD;
+}
+#login .subtitle{
+    color: #78C9FB;
+    text-align: center;
+    padding:5px;
+}
+#login .subtitle:hover{
+    text-decoration: underline;
+}

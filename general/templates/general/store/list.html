@@ -1,0 +1,108 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.5-dist/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.5-dist/css/bootstrap.theme.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.4.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'gestao/style.css' %}" />
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'bootstrap-3.3.5-dist/js/bootstrap.min.js' %}"></script>
+<title>GCA - CC</title>
+
+    {% block main %}
+        <div class="cabecalho">
+		<nav class="navbar">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand logo" href="/"><i class="fa fa-graduation-cap"></i> CACC</a>
+				</div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cabecalho-links">
+                        <li><a href="/geral/documentos">Documentos </a></li>
+                        <li><a href="/geral/classificados">Classificados </a></li>
+                        <li class="a-list-group-active"><a href="/geral/loja">Loja Virtual </a></li>
+                        <li><a href="/geral/dicas">Dicas</a></li>
+                    </ul>
+                <ul class="nav navbar-nav navbar-right cabecalho-links">
+                    <li>
+                        <li><a href="/gestao">Login</a></li>
+                    </li>
+                 </ul>
+			    </div><!-- /.container-fluid -->
+            </div>
+		</nav>
+	</div>
+        <div class="container-fluid full-width">
+            <div class="row destaque-logo">
+                <div class="col-xs-4">
+                </div>
+                <div class="col-xs-4 center">
+                    <img class="img-responsive" src={% static 'gestao/images/logo_ca.jpg' %}>
+                </div>
+                <div class="col-xs-4">
+                </div>
+            </div>
+        </div>
+        <div class="container ">
+            <h1 class="title-outside"><span class="fa fa-2x fa-shopping-cart"></span> </h1>
+
+            {% if products %}
+                <div class="row">
+                {% for prod in products %}
+
+                        <div class="col-xs-12 col-md-4">
+                            <div class="box">
+                                <img class="img-responsive img-class" src={% static prod.img.url %}>
+                                <div class="info">
+                                    <h4 class="text-center">{{ prod.name }}</h4>
+                                    <p>{{ prod.desc }}</p>
+                                    <span class="myLabel">{{prod.type.name}}</span>  <span class="myLabel">{{ prod.type.size }}</span>
+                                </div>
+                            </div>
+                            <span></span>
+                        </div>
+
+                {% endfor %}
+                </div>
+            {% else %}
+                Sem produtos adicionados.
+            {% endif %}
+        <div class="row">
+                {% if is_paginated %}
+                <div class="paginacao">
+                    <span class="paginacao-links">
+                        <div class="col-md-2">
+                            {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}"> <i class="fa fa-2x fa-arrow-circle-o-left"></i></a>
+                            {% endif %}
+
+                        </div>
+                        <div class="col-md-8">
+                            <span class="page-current">
+                                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}"> <i class="fa fa-2x fa-arrow-circle-o-right"></i></a>
+                            {% endif %}
+                        </div>
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+{% endblock %}
+
+        <div class="rodape">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4 right">
+                    {% load static from staticfiles %}
+                    <img class="img-rodape" src="{% static "gestao/images/adpt-chamaleon.png" %}" />
+                </div>
+            </div>
+        </div>

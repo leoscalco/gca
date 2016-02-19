@@ -1,0 +1,107 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.5-dist/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.5-dist/css/bootstrap.theme.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.4.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'gestao/style.css' %}" />
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'bootstrap-3.3.5-dist/js/bootstrap.min.js' %}"></script>
+<title>GCA - CC</title>
+
+    {% block main %}
+        <div class="cabecalho">
+		<nav class="navbar">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand logo" href="/"><i class="fa fa-graduation-cap"></i> CACC</a>
+				</div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cabecalho-links">
+                        <li><a href="/geral/documentos">Documentos </a></li>
+                        <li><a href="/geral/classificados">Classificados </a></li>
+                        <li><a href="/geral/loja">Loja Virtual </a></li>
+                        <li class="a-list-group-active"><a href="/geral/dicas">Dicas</a></li>
+                    </ul>
+                <ul class="nav navbar-nav navbar-right cabecalho-links">
+                    <li>
+                        <li><a href="/gestao">Login</a></li>
+                    </li>
+                 </ul>
+			    </div><!-- /.container-fluid -->
+            </div>
+		</nav>
+	</div>
+        <div class="container-fluid full-width">
+            <div class="row destaque-logo">
+                <div class="col-xs-4">
+                </div>
+                <div class="col-xs-4 center">
+                    <img class="img-responsive" src={% static 'gestao/images/logo_ca.jpg' %}>
+                </div>
+                <div class="col-xs-4">
+                </div>
+            </div>
+        </div>
+        <div class="container ">
+            <h1 class="title-outside"><span class="fa fa-2x fa-info"></span> </h1>
+
+                <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="info">
+                                    <h4 class="text-center">Solicitando acesso ao GCA</h4>
+                                    <p>
+                                        Para solicitar acesso ao GCA, é necessário enviar um e-mail para <b>cacc.unioeste@gmail.com</b> com
+                                        o assunto "Acesso GCA" passando no corpo do e-mail: Nome completo, data de nascimento, e-mail e senha requerida
+                                        (e-mail funcionará como login), como também foto em anexo.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                 <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="info">
+                                    <h4 class="text-center">Solicitando adição de classificado</h4>
+                                    <p>
+                                        Para adicionar um classificado, é necessário enviar um e-mail para <b>cacc.unioeste@gmail.com</b> com o assunto
+                                        "Adição de Classificado GCA" passando no corpo do e-mail: Nome do item (ex: Livro Cálculo I; Aluguel de Casa, etc.),
+                                        descrição do item, imagem do item e nome completo do interessado. Este passará por avaliação e o interessado terá o feedback.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                 <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="info">
+                                    <h4 class="text-center">Dúvidas, sugestões ou reclamações</h4>
+                                    <p>
+                                         Para dúvidas, sugestões ou reclamações: <b>cacc.unioeste@gmail.com</b>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+
+        </div>
+{% endblock %}
+
+        <div class="rodape">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4 right">
+                    {% load static from staticfiles %}
+                    <img class="img-rodape" src="{% static "gestao/images/adpt-chamaleon.png" %}" />
+                </div>
+            </div>
+        </div>

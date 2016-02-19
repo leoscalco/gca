@@ -1,0 +1,106 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.5-dist/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.5-dist/css/bootstrap.theme.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'font-awesome-4.4.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'gestao/style.css' %}" />
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'bootstrap-3.3.5-dist/js/bootstrap.min.js' %}"></script>
+<title>GCA - CC</title>
+    <div class="cabecalho">
+		<nav class="navbar">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand logo a-list-group-active" href="/gestao/scenario"><i class="fa fa-graduation-cap"></i> GCA</a>
+				</div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cabecalho-links">
+                        <li><a href="/gestao/turmas">Turmas </a></li>
+                        <li><a href="/gestao/alunos">Alunos </a></li>
+                        <li><a href="/gestao/professores">Professores</a></li>
+                        <li><a href="/gestao/disciplinas">Disciplinas</a></li>
+                        <li><a href="/gestao/provas">Provas</a></li>
+                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">&nbsp; <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/gestao/editar">Alterar senha</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/gestao/logout">Sair</a></li>
+                      </ul>
+                    </li>
+                 </ul>
+			    </div><!-- /.container-fluid -->
+            </div>
+		</nav>
+	</div>
+    <div class="login_container container">
+    {% load static from staticfiles %}
+        <div class="mensagem">
+            {{message}}
+        </div>
+        {% block main %}
+            <div class="row">
+                <div class="col-sm-12">
+                    <legend>Eventos</legend>
+
+                        {% if events %}
+                            <div class="row">
+                        {% for event in events %}
+                              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="box">
+                                        <img class="img-responsive" src={% static event.file.url %}>
+                                        <div class="info">
+                                            <span class="myLabel"> {{ event.type }}</span>
+                                            <h4 class="text-center"><a target="_blank" href="{{ event.site }}">{{ event.name }}</a></h4>
+                                            <span class="right"> {{ event.date }}</span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                        {% endfor %}
+                            </div>
+                    {% endif %}
+                    </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <legend>Provas recentemente adicionadas</legend>
+                    <div class="list-group">
+                    {% if tests %}
+                        {% for test in tests %}
+                            <a href="/gestao/provas/{{ test.id }}" class="list-group-item a-list-group">{{test}}</a>
+                        {% endfor %}
+                    {% else %}
+                        Sem provas adicionadas.
+                    {% endif %}
+                    </div>
+                </div>
+                 <div class="col-sm-4">
+                   <legend>Disciplinas do Curso</legend>
+                    {% if disciplines %}
+                        {% for discipline in disciplines %}
+                            <a href="/gestao/disciplinas/{{ discipline.id }}"><span class="myLabel">{{discipline.tag}}</span></a>
+                        {% endfor %}
+                    {% else %}
+                        Estudante sem disciplinas atreladas.
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="rodape">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4 right">
+
+                    <img class="img-rodape" src="{% static "gestao/images/adpt-chamaleon.png" %}" />
+                </div>
+            </div>
+        </div>
+{% endblock %}
