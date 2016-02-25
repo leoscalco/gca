@@ -21,7 +21,7 @@
                     <ul class="nav navbar-nav cabecalho-links">
                         <li><a href="/geral/documentos">Documentos </a></li>
                         <li class="li a-list-group-active"><a href="/geral/classificados">Classificados </a></li>
-                        <li><a href="/geral/loja">Loja Virtual </a></li>
+                        <li><a href="/geral/vitrine">Vitrine Virtual </a></li>
                         <li><a href="/geral/dicas">Dicas</a></li>
                     </ul>
                 <ul class="nav navbar-nav navbar-right cabecalho-links">
@@ -45,6 +45,8 @@
             </div>
         </div>
         <div class="container ">
+
+		<div class="cacc-info"></div>
             <h1 class="title-outside"><span class="fa fa-2x fa-bullhorn"></span> </h1>
 
             {% if classifieds %}
@@ -57,12 +59,14 @@
                                 <div class="info">
                                     <h4 class="text-center">{{ c.name }}</h4>
                                     <p>{{ c.desc }}</p>
-                                    <span class="myLabel">{{c.student}} - {{ c.student.email }}</span>
+                                   <a href="/gestao/alunos/{{c.student.id}}"><span class="myLabel">{{c.student}}</span></a>
                                 </div>
                             </div>
                             <span></span>
                         </div>
-
+			{% if forloop.counter|divisibleby:"3" and not forloop.last %}
+			</div><div class="row">
+			{% endif %}
                 {% endfor %}
                 </div>
             {% else %}
@@ -98,7 +102,10 @@
         <div class="rodape">
             <div class="row">
                 <div class="col-sm-4"></div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 cacc-info">
+		CACC - Centro Acadêmico de Ciência da Computação 
+<br>
+Unioeste - Foz do Iguaçu
                 </div>
                 <div class="col-sm-4 right">
                     {% load static from staticfiles %}

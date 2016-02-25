@@ -58,7 +58,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                {% endfor %}
+					{% if forloop.counter|divisibleby:"3" and not forloop.last %}
+</div><div class="row">
+{% endif %}   
+                             {% endfor %}
                                     </div>
                             {% endif %}
                 </div>
@@ -91,7 +94,10 @@
          <div class="rodape">
             <div class="row">
                 <div class="col-sm-4"></div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 cacc-info">
+		CACC - Centro Acadêmico de Ciência da Computação 
+<br>
+Unioeste - Foz do Iguaçu
                 </div>
                 <div class="col-sm-4 right">
                     {% load static from staticfiles %}

@@ -145,7 +145,7 @@ def test_download(request, pk):
     test = Test.objects.get(id=pk)
     fsock = open(test.file.path, 'r')
     response = HttpResponse(fsock, content_type='application/zip')
-    response['Content-Disposition'] = "attachment; filename=%s.zip" % test.name
+    response['Content-Disposition'] = "attachment; filename=%s.zip" % test
     return response
 
 def edit(request):

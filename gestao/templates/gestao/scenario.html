@@ -84,7 +84,7 @@
                    <legend>Disciplinas do Curso</legend>
                     {% if disciplines %}
                         {% for discipline in disciplines %}
-                            <a href="/gestao/disciplinas/{{ discipline.id }}"><span class="myLabel">{{discipline.tag}}</span></a>
+                            <a href="/gestao/disciplinas/{{ discipline.id }}"><span class="myLabel myLabel-scenario">{{discipline.tag}}</span></a>
                         {% endfor %}
                     {% else %}
                         Estudante sem disciplinas atreladas.
@@ -95,7 +95,10 @@
         <div class="rodape">
             <div class="row">
                 <div class="col-sm-4"></div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 cacc-info">
+			CACC - Centro Acadêmico de Ciência da Computação 
+<br>
+Unioeste - Foz do Iguaçu
                 </div>
                 <div class="col-sm-4 right">
 

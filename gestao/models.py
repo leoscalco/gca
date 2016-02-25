@@ -198,7 +198,7 @@ class NewType(models.Model):
 class New(models.Model):
     body = models.CharField(max_length=4000, default='')
     post_date = models.DateTimeField()
-    title = models.CharField(max_length=45, default='')
+    title = models.CharField(max_length=120, default='')
     validate_date = models.DateTimeField()
     img = models.ImageField(upload_to=u'files/news', blank=True)
     typeN = models.ForeignKey(NewType, default=1)
@@ -219,7 +219,7 @@ class DocumentType(models.Model):
         return u'%s' % self.name
 
 class Document(models.Model):
-    name = models.CharField(max_length=45, default='')
+    name = models.CharField(max_length=100, default='')
     file = models.FileField(upload_to=u'files/docs', blank=True)
     post_date = models.DateTimeField()
     type = models.ForeignKey(DocumentType, default=1)
@@ -253,7 +253,6 @@ class ProductSize(models.Model):
 
 class ProductType(models.Model):
     name = models.CharField(max_length=45, default='')
-    size = models.ForeignKey(ProductSize, default=1)
 
     def __str__(self):
         return self.name
@@ -266,9 +265,11 @@ class Product(models.Model):
     desc = models.CharField(max_length=300)
     type = models.ForeignKey(ProductType, default=1)
     img = models.ImageField(upload_to=u'files/classified', blank=True)
+    price = models.FloatField(default=0)
+    size = models.ForeignKey(ProductSize, default=1)
 
     def __str__(self):
-        return self.type.name + " " + self.type.size.name
+        return self.type.name + " " + self.size.name
 
     def __unicode__(self):
-        return self.type.name + " " +  self.type.size.name
+        return self.type.name + " " +  self.size.name

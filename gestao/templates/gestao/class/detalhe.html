@@ -83,6 +83,7 @@
                     <legend>Alunos</legend>
                     <div class="list-group">
                     {% if object.students %}
+			<div class="row">
                         {% for student in object.students.all %}
                              <div class="col-xs-12 col-md-3">
                                 <div class="box">
@@ -94,7 +95,11 @@
                                     </div>
                                 </div>
                             </div>
+				{% if forloop.counter|divisibleby:"4" and not forloop.last %}
+</div><div class="row">
+				{% endif %}
                         {% endfor %}
+			</div>
                     {% else %}
                         Turma sem alunos atrelados.
                     {% endif %}
@@ -106,7 +111,10 @@
          <div class="rodape">
             <div class="row">
                 <div class="col-sm-4"></div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 cacc-info">
+	CACC - Centro Acadêmico de Ciência da Computação 
+<br>
+Unioeste - Foz do Iguaçu
                 </div>
                 <div class="col-sm-4 right">
                     {% load static from staticfiles %}
