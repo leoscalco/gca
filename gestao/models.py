@@ -176,7 +176,7 @@ class EventType(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=100, default="")
     date = models.DateTimeField(verbose_name='Data do evento')
-    site = models.URLField(default='http://www.google.com')
+    site = models.URLField(default='', blank=True)
     file = models.ImageField(upload_to=u'files/events', blank=True)
     type = models.ForeignKey(EventType, default=1)
 

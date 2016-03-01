@@ -52,8 +52,10 @@
                                 {% for student in students %}
                                       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                             <div class="box">
-                                                <img class="img-responsive img-pessoa" src={% static student.img.url %}>
-                                                <div class="info">
+                                               {% if student.img %}
+						 <img class="img-responsive img-pessoa" src={% static student.img.url %}>
+                                               {% endif %}
+						 <div class="info">
                                                     <h4 class="text-center"><a href="/gestao/alunos/{{ student.id }}">{{ student.name }}</a></h4>
                                                     <p class="right"><b>E-mail:</b> {{ student.email }} </br>
                                                     <b>Data de nascimento:</b> {{ student.date_of_birth }}</p>

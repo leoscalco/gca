@@ -52,8 +52,10 @@
                         {% for event in events %}
                               <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                     <div class="box">
+					{% if event.file %}
                                         <img class="img-responsive" src={% static event.file.url %}>
-                                        <div class="info">
+                                        {% endif %}
+					 <div class="info">
                                             <span class="myLabel"> {{ event.type }}</span>
                                             <h4 class="text-center"><a target="_blank" href="{{ event.site }}">{{ event.name }}</a></h4>
                                             <span class="right"> {{ event.date }}</span>

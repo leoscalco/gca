@@ -34,50 +34,50 @@ class ListTeacher(LoginRequiredMixin, generic.ListView):
     redirect_field_name = 'redirect_to'
     template_name = "gestao/teacher/list.html"
     context_object_name = 'teachers'
-    paginate_by = 20
+    paginate_by = 21
 
     def get_queryset(self):
-        return Teacher.objects.all()
+        return Teacher.objects.all().order_by("name")
 
 class ListStudent(LoginRequiredMixin, generic.ListView):
     login_url = "/gestao/"
     redirect_field_name = 'redirect_to'
     template_name = "gestao/student/list.html"
     context_object_name = 'students'
-    paginate_by = 20
+    paginate_by = 21
 
     def get_queryset(self):
-        return Student.objects.all()
+        return Student.objects.all().order_by("name")
 
 class ListDiscipline(LoginRequiredMixin, generic.ListView):
     login_url = "/gestao/"
     redirect_field_name = 'redirect_to'
     template_name = "gestao/discipline/list.html"
     context_object_name = 'disciplines'
-    paginate_by = 20
+    paginate_by = 21
 
     def get_queryset(self):
-        return Discipline.objects.all()
+        return Discipline.objects.all().order_by("name")
 
 class ListClass(LoginRequiredMixin, generic.ListView):
     login_url = "/gestao/"
     redirect_field_name = 'redirect_to'
     template_name = "gestao/class/list.html"
     context_object_name = 'classes'
-    paginate_by = 20
+    paginate_by = 21
 
     def get_queryset(self):
-        return Class.objects.all()
+        return Class.objects.all().order_by("discipline", "year")
 
 class ListTest(LoginRequiredMixin, generic.ListView):
     login_url = "/gestao/"
     redirect_field_name = 'redirect_to'
     template_name = "gestao/test/list.html"
     context_object_name = 'tests'
-    paginate_by = 20
+    paginate_by = 21
 
     def get_queryset(self):
-        return Test.objects.all()
+        return Test.objects.all().order_by("date")
 
 class DetailClass(LoginRequiredMixin, generic.DetailView):
     login_url = "/gestao/"

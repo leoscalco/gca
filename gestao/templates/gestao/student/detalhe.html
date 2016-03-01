@@ -45,8 +45,10 @@
             <legend>{{ object.name }}</legend>
             <div class="row">
                 <div class="col-sm-5">
+			{% if object.img %}
                     <img class="img-responsive img-aluno" src="{{ object.img.url }}">
-                </div>
+                	{% endif %}
+		</div>
                 <div class="col-sm-7">
                     <p><b>E-mail: </b> {{ object.email }}</p>
                     <p><b>Data de Nascimento: </b> {{ object.date_of_birth }}</p>
